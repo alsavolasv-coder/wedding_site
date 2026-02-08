@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадьба Снежаны и Матвея</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === ОСНОВНЫЕ НАСТРОЙКИ (CSS) === */
+        :root {
+            --primary-color: #d4a373; /* Золотисто-бежевый */
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Плавный скролл */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === НАВИГАЦИЯ === */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* === ГЛАВНЫЙ ЭКРАН (HERO) === */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #e0e0e0; /* Цвет заглушки, пока нет фото */
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Класс для главной фоновой картинки */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6; /* Затемнение фото */
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        header .date {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-top: 1px solid var(--text-color);
+            border-bottom: 1px solid var(--text-color);
+            padding: 10px 20px;
+        }
+
+        /* === ОБЩИЕ СТИЛИ СЕКЦИЙ === */
+        section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* === СЕКЦИЯ "О НАС" === */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .photo-placeholder {
+            width: 300px;
+            height: 400px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+	.about-text {
+            max-width: 400px;
+            text-align: left;
+        }
+
+        /* === СЕКЦИЯ ДЕТАЛИ (ГДЕ И КОГДА) === */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* === СЕКЦИЯ RSVP === */
+        .rsvp-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .rsvp-btn:hover {
+            background-color: #b08d66;
+        }
+
+        /* === ФУТЕР === */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .about-text { text-align: center; }
+            nav a { display: inline-block; margin: 5px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#story">Наша история</a>
+        <a href="#details">Детали</a>
+        <a href="#rsvp">Контакты</a>
+    </nav>
+
+    <header id="home">
+        <img src="" alt="" class="hero-bg">
+        
+        <h1>Снежана & Матвей</h1>
+        <p>Мы приглашаем вас на нашу свадьбу</p>
+        <div class="date">25 АПРЕЛЯ 2026</div> </header>
+
+    <section id="story">
+        <h2>Дорогие гости!</h2>
+        <div class="about-content">
+            <div class="photo-placeholder">
+                <img src="C:\Users\matve\Downloads\Telegram Desktop\1770545110128.png" alt="Фото Снежаны и Матвея">
+            </div>
+            <div class="about-text">
+                <p>
+                    В нашей жизни наступает особенный момент, и мы хотим разделить его с самыми близкими людьми. 
+                    Ваша поддержка и любовь всегда были важны для нас.
+                </p>
+                <br>
+                <p>
+                    Мы будем счастливы видеть вас в этот светлый день, чтобы вместе отпраздновать начало нашей семейной жизни!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="details">
+        <h2>Программа дня</h2>
+        <div class="details-grid">
+            <div class="card">
+                <h3>Регистрация</h3>
+                <p><strong>Время:</strong> 14.30</p>
+                <p><strong>Место:</strong> ЗАГС</p>
+                <p>мкр. Надежда, 1</p>
+            </div>
+            <div class="card">
+                <h3>Банкет</h3>
+                <p><strong>Время:</strong> 17:00</p>
+                <p><strong>Место:</strong> Зал торжеств "Панорама"</p>
+                <p>проспект Молодежный, 6</p>
+            </div>
+            <div class="card">
+                <h3>Дресс-код</h3>
+                <p>Ждем вас в свободном Дресс-коде</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp">
+        <h2>Пожалуйста, подтвердите присутствие</h2>
+        <p>Нам очень важно знать, сможете ли вы быть с нами. Пожалуйста, сообщите нам до 30 марта любым удобным способом.</p>
+        
+        <a href="tel:+79950164860" class="rsvp-btn">Позвонить нам</a>
+    </section>
+
+    <footer>
+        <p>Снежана и Матвей © 2026</p>
+    </footer>
+
+</body>
+</html>
